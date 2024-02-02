@@ -1,7 +1,7 @@
 # Data Engineering Zoomcamp 2023 Week 2: Workflow Orchestration
 
 
-The workflow is done by Mage (check out our docs [here](https://docs.mage.ai/introduction/overview))
+The workflow is done by Mage (check out our docs ![here](https://docs.mage.ai/introduction/overview))
 
 
 ## Configuring Mage
@@ -92,7 +92,7 @@ run docker container (with mage + Postgres)
 
 Ther mage can be accessseble thru:http://localhost:6789/
 
-the mail [screen](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline.png)
+the main [!screen](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline.png)
 
 
 ## ETL: API to Postgres
@@ -116,18 +116,18 @@ Update ```io_config.yaml``` to add the section of creating dev profiler section 
 In mage 
 edit the pipeline name to test_config
 
-[img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_config_1.png) 
+![img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_config_1.png) 
 
 create a sql data loader test_postgres to test connection to Postgres
 
-[img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_config_2.png)
+![img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_config_2.png)
 
 in loader block set: 
 - Connection - Postgres
 - profile - dev
 - run SELECT 1
 
-[img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_config_test_pg_connection.png)
+![img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_config_test_pg_connection.png)
 
 ### api to Postgres
 
@@ -263,11 +263,11 @@ It means that all file from directory will be copied into project.
     object_key = 'nyc_taxi_data.parquet'
 ```
 - run the pipeline - the ```nyc_taxi_data.parquet``` should appears in gcs
-[img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_2.png)
+![img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_2.png)
 
 Not to load a big file into gcs we can divide it (make partitions). For this:
 - create a new python(generic) data exporter ```taxi_data_to_gsc_partitioned_parquet``` 
-- make a connection like [this](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_3.png))
+- make a connection like ![this](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_3.png))
 - update ```taxi_data_to_gsc_partitioned_parquet``` like this:
 ```
 import pyarrow as pa
@@ -303,7 +303,7 @@ def export_data(data, *args, **kwargs):
     )
 
 ```
-- run the block - the partitioned data should appear in gcs: [gcs](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_4.png)
+- run the block - the partitioned data should appear in gcs: ![gcs](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_4.png)
 
 
 

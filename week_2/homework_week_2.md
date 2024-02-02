@@ -1,8 +1,8 @@
 - Create a new pipeline, call it green_taxi_etl
 
-[start](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/homework_week2_pipeline.png)
+![start](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/homework_week2_pipeline.png)
 
-[final](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_6.png)
+![final](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_6.png)
 
 - Add a data loader block and use Pandas to read data for the final quarter of 2020 (months 10, 11, 12).
   - You can use the same datatypes and date parsing methods shown in the course.
@@ -151,15 +151,15 @@ def test_output(output, *args) -> None:
 
 
 - Using a Postgres data exporter (SQL or Python), write the dataset to a table called green_taxi in a schema mage. Replace the table if it already exists.
-[img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_5.png)
+![](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_5.png)
 
 - Write your data as Parquet files to a bucket in GCP, partioned by lpep_pickup_date. Use the pyarrow library!
 
-[gcs](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_7.png)
+![gcs](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_7.png)
 
 - Schedule your pipeline to run daily at 5AM UTC.
 
-[schedule](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_8.png)
+![schedule](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_8.png)
 
 # Question 1. Data Loading
 Once the dataset is loaded, what's the shape of the data?
@@ -169,7 +169,7 @@ Once the dataset is loaded, what's the shape of the data?
 - 544,898 rows x 20 columns
 - 133,744 rows x 20 columns
 
-[answer](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/homework_week2_q1.png)
+![answer](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/homework_week2_q1.png)
 
 
 # Question 2. Data Transformation
@@ -180,7 +180,7 @@ Upon filtering the dataset where the passenger count is equal to 0 or the trip d
 - 139,370 rows - this one is the answer
 - 266,856 rows
 
-[answer](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/homework_week2_q2.png)
+![answer](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/homework_week2_q2.png)
 
 
 # Question 3. Data Transformation
