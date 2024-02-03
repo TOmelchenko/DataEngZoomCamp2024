@@ -252,7 +252,7 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
 ```
 It means that all file from directory will be copied into project.
 
-### Writing ETL pipeline: API to GCS
+### ETL pipeline: API to GCS
 - create a new pipeline ```api_to_gcp```
 - use already created blocks: ```load_api_data``` and ```transform_taxi_data```
 - connect 2 blocks like in [img](/Users/tetianaomelchenko/Documents/GitHub/DataEngZoomCamp2024/img/mage_pipeline_1.png)
@@ -304,6 +304,62 @@ def export_data(data, *args, **kwargs):
 
 ```
 - run the block - the partitioned data should appear in gcs: ![gcs](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_4.png)
+
+### ETL: GCS to BigQuery
+
+- Create a new pipeline ```gcs_to_bigquery	```
+- create a new python data loader```load_taxi_gcs``` load from gcs
+- update bucket name and file name in the template:
+```from mage_ai.settings.repo import get_repo_path
+from mage_ai.io.config import ConfigFileLoader
+from mage_ai.io.google_cloud_storage import GoogleCloudStorage
+from os import path
+if 'data_loader' not in globals():
+    from mage_ai.data_preparation.decorators import data_loader
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+
+@data_loader
+def load_from_google_cloud_storage(*args, **kwargs):
+    """
+    Template for loading data from a Google Cloud Storage bucket.
+    Specify your configuration settings in 'io_config.yaml'.
+
+    Docs: https://docs.mage.ai/design/data-loading#googlecloudstorage
+    """
+    config_path = path.join(get_repo_path(), 'io_config.yaml')
+    config_profile = 'default'
+
+    bucket_name = 'mage_dezoomcamp2024_1'
+    object_key = 'nyc_taxi_data.parquet'
+
+    return GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).load(
+        bucket_name,
+        object_key,
+    )
+```
+- create a python transformation ```transform_stage_data``` to standardize column names:
+```
+if 'transformer' not in globals():
+    from mage_ai.data_preparation.decorators import transformer
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+
+@transformer
+def transform(data, *args, **kwargs):
+    data.columns = (data.columns
+                    .str.replace(' ', '_')
+                    .str.lower()
+    )
+    return data
+```
+- create a SQL data exporter ```export_taxi_to_bigquery```: 
+![](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_9)
+
+
+
 
 
 
