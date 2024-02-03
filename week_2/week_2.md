@@ -355,7 +355,7 @@ def transform(data, *args, **kwargs):
     )
     return data
 ```
-- create a SQL data exporter ```export_taxi_to_bigquery``` ![img](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_9)
+- create a SQL data exporter ```export_taxi_to_bigquery``` ![](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/mage_pipeline_9.png)
 
 
 
