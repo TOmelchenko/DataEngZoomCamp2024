@@ -135,6 +135,8 @@ Create a dashboard with some tiles that you find interesting to explore the data
 
 ![](https://github.com/TOmelchenko/DataEngZoomCamp2024/blob/main/img/dbt_21.png)
 
+Link to Dashboard: https://lookerstudio.google.com/s/sQcbGoKUzdo
+
 
 
 
